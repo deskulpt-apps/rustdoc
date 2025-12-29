@@ -1,0 +1,54 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Dispatch a Deskulpt plugin command."><title>dispatch in deskulpt_plugin - Rust</title><script>if(window.location.protocol!=="file:")document.head.insertAdjacentHTML("beforeend","SourceSerif4-Regular-6b053e98.ttf.woff2,FiraSans-Italic-81dc35de.woff2,FiraSans-Regular-0fe48ade.woff2,FiraSans-MediumItalic-ccf7e434.woff2,FiraSans-Medium-e1aa3f0a.woff2,SourceCodePro-Regular-8badfe75.ttf.woff2,SourceCodePro-Semibold-aa29a496.ttf.woff2".split(",").map(f=>`<link rel="preload" as="font" type="font/woff2"href="../static.files/${f}">`).join(""))</script><link rel="stylesheet" href="../static.files/normalize-9960930a.css"><link rel="stylesheet" href="../static.files/rustdoc-80aa586b.css"><meta name="rustdoc-vars" data-root-path="../" data-static-root-path="../static.files/" data-current-crate="deskulpt_plugin" data-themes="" data-resource-suffix="" data-rustdoc-version="1.94.0-nightly (21cf7fb3f 2025-12-28)" data-channel="nightly" data-search-js="search-9e2438ea.js" data-stringdex-js="stringdex-b897f86f.js" data-settings-js="settings-c38705f0.js" ><script src="../static.files/storage-e2aeef58.js"></script><script defer src="sidebar-items.js"></script><script defer src="../static.files/main-7bab91a1.js"></script><noscript><link rel="stylesheet" href="../static.files/noscript-ffcac47a.css"></noscript><link rel="icon" href="https://github.com/deskulpt-apps/Deskulpt/raw/main/public/deskulpt.svg"></head><body class="rustdoc attr"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><rustdoc-topbar><h2><a href="#">dispatch</a></h2></rustdoc-topbar><nav class="sidebar"><div class="sidebar-crate"><a class="logo-container" href="../deskulpt_plugin/index.html"><img src="https://github.com/deskulpt-apps/Deskulpt/raw/main/public/deskulpt.svg" alt="logo"></a><h2><a href="../deskulpt_plugin/index.html">deskulpt_<wbr>plugin</a><span class="version">0.3.0</span></h2></div><div class="sidebar-elems"><section id="rustdoc-toc"><h2 class="location"><a href="#">dispatch</a></h2><h3><a href="#">Sections</a></h3><ul class="block top-toc"><li><a href="#example" title="Example">Example</a></li></ul></section><div id="rustdoc-modnav"><h2 class="in-crate"><a href="index.html">In crate deskulpt_<wbr>plugin</a></h2></div></div></nav><div class="sidebar-resizer" title="Drag to resize sidebar"></div><main><div class="width-limiter"><section id="main-content" class="content"><div class="main-heading"><div class="rustdoc-breadcrumbs"><a href="index.html">deskulpt_plugin</a></div><h1>Attribute Macro <span class="attr">dispatch</span>&nbsp;<button id="copy-path" title="Copy item path to clipboard">Copy item path</button></h1><rustdoc-toolbar></rustdoc-toolbar><span class="sub-heading"><a class="src" href="../src/deskulpt_plugin_macros/lib.rs.html#12">Source</a> </span></div><pre class="rust item-decl"><code>#[dispatch]</code></pre><details class="toggle top-doc" open><summary class="hideme"><span>Expand description</span></summary><div class="docblock"><p>Dispatch a Deskulpt plugin command.</p>
+<p>The <a href="trait.PluginCommand.html#tymethod.run" title="method deskulpt_plugin::PluginCommand::run"><code>PluginCommand::run</code></a> method requires the <a href="https://docs.rs/serde_json/1.0.145/serde_json/value/enum.Value.html" title="enum serde_json::value::Value"><code>serde_json::Value</code></a> type
+for command input and output so as to interoperate with calls from the
+widgets in the frontend. This would require manual deserialization and
+serialization when implementing any command.</p>
+<p>When marked with <code>#[dispatch]</code>, the signature of the method remains the
+same, except that <code>input</code> is allowed to be any type that implements
+[<code>serde::Deserialize</code>], and the return type is allowed to be <code>Result&lt;T, E&gt;</code>
+for any type <code>T</code> that implements [<code>serde::Serialize</code>] and any type <code>E</code> that
+can be converted to <a href="https://docs.rs/anyhow/1.0.100/anyhow/struct.Error.html" title="struct anyhow::Error"><code>anyhow::Error</code></a> with the <code>?</code> operator. That said, the
+most convenient way would be to use <a href="https://docs.rs/anyhow/1.0.100/anyhow/type.Result.html" title="type anyhow::Result"><code>anyhow::Result&lt;T&gt;</code></a>
+for the return type directly.</p>
+<h4 id="example"><a class="doc-anchor" href="#example">§</a>Example</h4>
+<div class="example-wrap"><pre class="rust rust-example-rendered"><code><span class="kw">use </span>anyhow::Result;
+<span class="kw">use </span>deskulpt_plugin::{dispatch, EngineInterface, PluginCommand};
+<span class="kw">use </span>serde::{Deserialize, Serialize};
+
+<span class="comment">// Implement the plugin...
+
+</span><span class="kw">struct </span>MetadataCommand;
+
+<span class="attr">#[derive(Deserialize)]
+</span><span class="kw">struct </span>InputPayload {
+    path: std::path::PathBuf,
+}
+
+<span class="attr">#[derive(Serialize)]
+</span><span class="kw">struct </span>OutputPayload {
+    is_dir: bool,
+    is_file: bool,
+    is_symlink: bool,
+    len: u64,
+}
+
+<span class="kw">impl </span>PluginCommand <span class="kw">for </span>MetadataCommand {
+    <span class="comment">// Associate types and methods...
+
+    </span><span class="attr">#[dispatch]
+    </span><span class="kw">fn </span>run(
+        <span class="kw-2">&amp;</span><span class="self">self</span>,
+        _id: String,
+        _plugin: <span class="kw-2">&amp;</span><span class="self">Self</span>::Plugin,
+        _engine: <span class="kw-2">&amp;</span>EngineInterface,
+        input: InputPayload,     <span class="comment">// Custom deserializable input type
+    </span>) -&gt; <span class="prelude-ty">Result</span>&lt;OutputPayload&gt; { <span class="comment">// Custom serializable output type
+        </span><span class="kw">let </span>metadata = std::fs::metadata(input.path)<span class="question-mark">?</span>;
+        <span class="prelude-val">Ok</span>(OutputPayload {
+            is_dir: metadata.is_dir(),
+            is_file: metadata.is_file(),
+            is_symlink: metadata.file_type().is_symlink(),
+            len: metadata.len(),
+        })
+    }
+}</code></pre></div></div></details></section></div></main></body></html>

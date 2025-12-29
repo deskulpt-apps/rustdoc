@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"attr":["dispatch"],"fn":["call_plugin"],"macro":["register_commands"],"mod":["command","interface"],"struct":["EngineInterface"],"trait":["Plugin","PluginCommand"]};

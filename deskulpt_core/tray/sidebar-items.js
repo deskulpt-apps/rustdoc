@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["on_menu_event","on_tray_icon_event"],"trait":["TrayExt"]};

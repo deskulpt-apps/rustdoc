@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["crate_dir","docs_dir","package_dir","root_dir"]};

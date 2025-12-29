@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["listen_to_mousemove","on_new_canvas_imode"],"static":["LISTENING_MOUSEMOVE"],"struct":["CanvasImodeState","CanvasLayout"],"trait":["CanvasImodeStateExt"]};

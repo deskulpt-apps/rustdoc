@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["PERSIST_DEBOUNCE"],"enum":["WorkerTask"],"struct":["Worker","WorkerHandle"]};

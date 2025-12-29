@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["reregister_shortcut"],"trait":["ShortcutsExt"]};

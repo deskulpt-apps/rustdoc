@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["on_window_event"],"mod":["script"],"trait":["WindowExt"]};

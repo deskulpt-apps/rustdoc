@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"macro":["build_bindings","collect_commands"],"struct":["Bindings","BindingsBuilder"]};

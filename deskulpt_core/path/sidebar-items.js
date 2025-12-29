@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"static":["LOGS_DIR","PERSIST_DIR","WIDGETS_DIR"],"trait":["PathExt"]};
