@@ -5,8 +5,8 @@ widgets in the frontend. This would require manual deserialization and
 serialization when implementing any command.</p>
 <p>When marked with <code>#[dispatch]</code>, the signature of the method remains the
 same, except that <code>input</code> is allowed to be any type that implements
-[<code>serde::Deserialize</code>], and the return type is allowed to be <code>Result&lt;T, E&gt;</code>
-for any type <code>T</code> that implements [<code>serde::Serialize</code>] and any type <code>E</code> that
+<a href="https://docs.rs/serde_core/1.0.228/serde_core/de/trait.Deserialize.html" title="trait serde_core::de::Deserialize"><code>serde::Deserialize</code></a>, and the return type is allowed to be <code>Result&lt;T, E&gt;</code>
+for any type <code>T</code> that implements <a href="https://docs.rs/serde_core/1.0.228/serde_core/ser/trait.Serialize.html" title="trait serde_core::ser::Serialize"><code>serde::Serialize</code></a> and any type <code>E</code> that
 can be converted to <a href="https://docs.rs/anyhow/1.0.100/anyhow/struct.Error.html" title="struct anyhow::Error"><code>anyhow::Error</code></a> with the <code>?</code> operator. That said, the
 most convenient way would be to use <a href="https://docs.rs/anyhow/1.0.100/anyhow/type.Result.html" title="type anyhow::Result"><code>anyhow::Result&lt;T&gt;</code></a>
 for the return type directly.</p>
