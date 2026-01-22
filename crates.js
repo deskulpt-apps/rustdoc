@@ -1,2 +1,2 @@
-window.ALL_CRATES = ["deskulpt","deskulpt_build","deskulpt_common","deskulpt_core","deskulpt_macros","deskulpt_plugin","deskulpt_plugin_fs","deskulpt_plugin_macros","deskulpt_plugin_sys","deskulpt_settings","deskulpt_widgets","deskulpt_workspace"];
-//{"start":21,"fragment_lengths":[10,17,18,16,18,18,21,25,22,20,19,21]}
+window.ALL_CRATES = ["deskulpt","deskulpt_build","deskulpt_common","deskulpt_core","deskulpt_logs","deskulpt_macros","deskulpt_plugin","deskulpt_plugin_fs","deskulpt_plugin_macros","deskulpt_plugin_sys","deskulpt_settings","deskulpt_widgets","deskulpt_workspace"];
+//{"start":21,"fragment_lengths":[10,17,18,16,16,18,18,21,25,22,20,19,21]}

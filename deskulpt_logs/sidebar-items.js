@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"fn":["init"],"mod":["commands","manager","reader"],"struct":["Cursor","Entry","LogsManager","Page"],"trait":["LogsExt"]};

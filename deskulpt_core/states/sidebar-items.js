@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"mod":["canvas_imode","logging"]};
+window.SIDEBAR_ITEMS = {"mod":["canvas_imode"]};

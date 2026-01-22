@@ -1,1 +1,0 @@
-window.SIDEBAR_ITEMS = {"constant":["MAX_LOG_FILES"],"struct":["LoggingState"],"trait":["LoggingStateExt"]};

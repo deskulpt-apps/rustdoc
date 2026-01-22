@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"static":["LOGS_DIR","PERSIST_DIR","WIDGETS_DIR"],"trait":["PathExt"]};
+window.SIDEBAR_ITEMS = {"static":["PERSIST_DIR","WIDGETS_DIR"],"trait":["PathExt"]};
