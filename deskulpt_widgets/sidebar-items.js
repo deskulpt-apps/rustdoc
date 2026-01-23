@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["init"],"mod":["catalog","commands","events","manager","registry","render","setup"],"struct":["WidgetsManager"],"trait":["WidgetsExt"]};
+window.SIDEBAR_ITEMS = {"fn":["init"],"mod":["catalog","commands","events","manager","registry","render"],"struct":["WidgetsManager"],"trait":["WidgetsExt"]};
