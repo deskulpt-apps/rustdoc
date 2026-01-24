@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"struct":["CanvasInitJS","ManagerInitJS"]};
+window.SIDEBAR_ITEMS = {"struct":["CanvasInitJS","PortalInitJS"]};
