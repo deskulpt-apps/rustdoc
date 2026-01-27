@@ -12,8 +12,8 @@
 <a href=#12 id=12 data-nosnippet>12</a>/// This should never be constructed manually in bindings providers; instead,
 <a href=#13 id=13 data-nosnippet>13</a>/// configure the build script and use [`build_bindings`].
 <a href=#14 id=14 data-nosnippet>14</a></span><span class="kw">pub struct </span>Bindings {
-<a href=#15 id=15 data-nosnippet>15</a>    <span class="doccomment">/// The namespace these bindings belong to, which should be the plugin name.
-<a href=#16 id=16 data-nosnippet>16</a>    </span><span class="kw">pub </span>namespace: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>str,
+<a href=#15 id=15 data-nosnippet>15</a>    <span class="doccomment">/// The module these bindings belong to, which should be the plugin name.
+<a href=#16 id=16 data-nosnippet>16</a>    </span><span class="kw">pub </span>module: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>str,
 <a href=#17 id=17 data-nosnippet>17</a>    <span class="doccomment">/// The specta type collection.
 <a href=#18 id=18 data-nosnippet>18</a>    </span><span class="kw">pub </span>types: TypeCollection,
 <a href=#19 id=19 data-nosnippet>19</a>    <span class="doccomment">/// The mapping from event names to their data types.
@@ -24,7 +24,7 @@
 <a href=#24 id=24 data-nosnippet>24</a>
 <a href=#25 id=25 data-nosnippet>25</a><span class="doccomment">/// Builder for a [`Bindings`] instance.
 <a href=#26 id=26 data-nosnippet>26</a></span><span class="kw">pub struct </span>BindingsBuilder {
-<a href=#27 id=27 data-nosnippet>27</a>    namespace: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>str,
+<a href=#27 id=27 data-nosnippet>27</a>    module: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>str,
 <a href=#28 id=28 data-nosnippet>28</a>    types: TypeCollection,
 <a href=#29 id=29 data-nosnippet>29</a>    events: BTreeMap&lt;<span class="kw-2">&amp;</span><span class="lifetime">'static </span>str, DataType&gt;,
 <a href=#30 id=30 data-nosnippet>30</a>    commands: <span class="prelude-ty">Option</span>&lt;<span class="kw">fn</span>(<span class="kw-2">&amp;mut </span>TypeCollection) -&gt; Vec&lt;Function&gt;&gt;,
@@ -32,9 +32,9 @@
 <a href=#32 id=32 data-nosnippet>32</a>
 <a href=#33 id=33 data-nosnippet>33</a><span class="kw">impl </span>BindingsBuilder {
 <a href=#34 id=34 data-nosnippet>34</a>    <span class="doccomment">/// Create a new [`BindingsBuilder`] instance.
-<a href=#35 id=35 data-nosnippet>35</a>    </span><span class="kw">pub fn </span>new(namespace: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>str) -&gt; <span class="self">Self </span>{
+<a href=#35 id=35 data-nosnippet>35</a>    </span><span class="kw">pub fn </span>new(module: <span class="kw-2">&amp;</span><span class="lifetime">'static </span>str) -&gt; <span class="self">Self </span>{
 <a href=#36 id=36 data-nosnippet>36</a>        <span class="self">Self </span>{
-<a href=#37 id=37 data-nosnippet>37</a>            namespace,
+<a href=#37 id=37 data-nosnippet>37</a>            module,
 <a href=#38 id=38 data-nosnippet>38</a>            types: Default::default(),
 <a href=#39 id=39 data-nosnippet>39</a>            events: Default::default(),
 <a href=#40 id=40 data-nosnippet>40</a>            commands: Default::default(),
@@ -70,7 +70,7 @@
 <a href=#70 id=70 data-nosnippet>70</a>        };
 <a href=#71 id=71 data-nosnippet>71</a>
 <a href=#72 id=72 data-nosnippet>72</a>        Bindings {
-<a href=#73 id=73 data-nosnippet>73</a>            namespace: <span class="self">self</span>.namespace,
+<a href=#73 id=73 data-nosnippet>73</a>            module: <span class="self">self</span>.module,
 <a href=#74 id=74 data-nosnippet>74</a>            types: <span class="self">self</span>.types.clone(),
 <a href=#75 id=75 data-nosnippet>75</a>            events: <span class="self">self</span>.events.clone(),
 <a href=#76 id=76 data-nosnippet>76</a>            commands,
