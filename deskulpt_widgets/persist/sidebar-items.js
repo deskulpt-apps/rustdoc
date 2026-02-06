@@ -1,0 +1,1 @@
+window.SIDEBAR_ITEMS = {"constant":["PERSIST_DEBOUNCE"],"struct":["PersistWorker","PersistWorkerHandle","PersistedWidget","PersistedWidgetCatalog","PersistedWidgetCatalogView"]};
