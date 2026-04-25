@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"macro":["ser_bail"],"mod":["bindings","event","init","outcome","ser_error","window"],"struct":["SerError"],"type":["SerResult"]};
+window.SIDEBAR_ITEMS = {"macro":["__ser_bail","ser_bail"],"mod":["bindings","event","init","outcome","ser_error","window"],"struct":["SerError"],"type":["SerResult"]};
